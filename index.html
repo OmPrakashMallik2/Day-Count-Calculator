@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day Count Calculator</title>
+  </head>
+  <body>
+    <div class="calculator">
+      <!-- // from  -->
+      <lebel>From :</lebel>
+      <input id="fd" type="number" placeholder="DD" />
+      <input id="fm" type="number" placeholder="MM" />
+      <input id="fy" type="number" placeholder="YYYY" /><br />
+
+      <!-- // to  -->
+      <lebel>To --- :</lebel>
+      <input id="td" type="number" placeholder="DD" />
+      <input id="tm" type="number" placeholder="MM" />
+      <input id="ty" type="number" placeholder="YYYY" /><br />
+
+      <h2 id="dd">hello</h2>
+      <h2 id="mm">hello</h2>
+      <h2 id="yy">hello</h2>
+
+      <button onclick="find()">find</button>
+    </div>
+
+    <script>
+      function find() {
+        
+        var fd = document.getElementById("fd").value;
+        var fm = document.getElementById("fm").value;
+        var fy = document.getElementById("fy").value;
+
+        var td = document.getElementById("td").value;
+        var tm = document.getElementById("tm").value;
+        var ty = document.getElementById("ty").value;
+
+        
+        
+        var dd = td - fd;
+        var mm = tm - fm;
+        var yy = ty - fy;
+        
+        document.getElementById("dd").innerHTML = dd;
+        document.getElementById("mm").innerHTML = mm;
+        document.getElementById("yy").innerHTML = yy;      }
+    </script>
+  </body>
+</html>
