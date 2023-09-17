@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,51 +7,66 @@
   </head>
   <body>
     <div class="calculator">
-      <!-- // to  -->
-      <lebel>To --- :</lebel>
+      <!-- To -->
+      <label>End Date:</label>
       <input id="td" type="number" placeholder="DD" />
       <input id="tm" type="number" placeholder="MM" />
       <input id="ty" type="number" placeholder="YYYY" /><br />
 
-      <!-- // from  -->
-      <lebel>From :</lebel>
+      <!-- From -->
+      <label>Start Date:</label>
       <input id="fd" type="number" placeholder="DD" />
       <input id="fm" type="number" placeholder="MM" />
       <input id="fy" type="number" placeholder="YYYY" /><br />
 
-      <h2 id="dd">hello</h2>
-      <h2 id="mm">hello</h2>
-      <h2 id="yy">hello</h2>
+      <h2 id="result"></h2>
 
-      <button onclick="find()">find</button>
+      <button onclick="calculate()">Calculate</button>
     </div>
 
     <script>
-      function find() {
-        var fd = document.getElementById("fd").value;
-        var fm = document.getElementById("fm").value;
-        var fy = document.getElementById("fy").value;
+      function calculate() {
+        var fd = Number(document.getElementById("fd").value);
+        var fm = Number(document.getElementById("fm").value);
+        var fy = Number(document.getElementById("fy").value);
 
         var td = Number(document.getElementById("td").value);
-        var tm = document.getElementById("tm").value;
-        var ty = document.getElementById("ty").value;
+        var tm = Number(document.getElementById("tm").value);
+        var ty = Number(document.getElementById("ty").value);
 
-        if (td < fd) {
-          td += 30;
-          tm -= 1;
-        }
-
-        if (tm < fm) {
-          tm += 12;
-          ty -= 1;
+        if (
+          isNaN(fd) ||
+          isNaN(fm) ||
+          isNaN(fy) ||
+          isNaN(td) ||
+          isNaN(tm) ||
+          isNaN(ty)
+        ) {
+          document.getElementById("result").innerHTML =
+            "Invalid input. Please enter valid numbers.";
+          return;
         }
 
         if (ty >= fy) {
-          document.getElementById("dd").innerHTML = td - fd;
-          document.getElementById("mm").innerHTML = tm - fm;
-          document.getElementById("yy").innerHTML = ty - fy;
+          var dd = td - fd;
+          var mm = tm - fm;
+          var yy = ty - fy;
+
+          if (dd < 0) {
+            mm -= 1;
+            dd += 30;
+          }
+
+          if (mm < 0) {
+            yy -= 1;
+            mm += 12;
+          }
+
+          document.getElementById("result").innerHTML =
+            yy + " years, " + mm + " months, " + dd + " days";
         } else {
-          document.getElementById("dd").innerHTML = "fuck off";
+          document.getElementById("result").innerHTML =
+            "Invalid input. 'To' date must be later than 'From' date.";
         }
       }
     </script>
