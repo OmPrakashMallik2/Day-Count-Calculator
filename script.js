@@ -16,7 +16,7 @@ function calculate() {
       (ty) == 0
     ) {
       document.getElementById("result").innerHTML =
-        "Please enter valid numbers.";
+        "Invalid input, Please enter valid numbers.";
       return;
     }
 
@@ -39,6 +39,6 @@ function calculate() {
         yy + " years, " + mm + " months, " + dd + " days";
     } else {
       document.getElementById("result").innerHTML =
-        "Invalid input. 'To' date must be later than 'From' date.";
+        "Invalid input. 'End' date must be later than 'Start' date.";
     }
   }
