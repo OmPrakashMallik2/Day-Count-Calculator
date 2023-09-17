@@ -9,17 +9,17 @@
   </head>
   <body>
     <div class="calculator">
-      <!-- // from  -->
-      <lebel>From :</lebel>
-      <input id="fd" type="number" placeholder="DD" />
-      <input id="fm" type="number" placeholder="MM" />
-      <input id="fy" type="number" placeholder="YYYY" /><br />
-
       <!-- // to  -->
       <lebel>To --- :</lebel>
       <input id="td" type="number" placeholder="DD" />
       <input id="tm" type="number" placeholder="MM" />
       <input id="ty" type="number" placeholder="YYYY" /><br />
+
+      <!-- // from  -->
+      <lebel>From :</lebel>
+      <input id="fd" type="number" placeholder="DD" />
+      <input id="fm" type="number" placeholder="MM" />
+      <input id="fy" type="number" placeholder="YYYY" /><br />
 
       <h2 id="dd">hello</h2>
       <h2 id="mm">hello</h2>
@@ -30,24 +30,32 @@
 
     <script>
       function find() {
-        
         var fd = document.getElementById("fd").value;
         var fm = document.getElementById("fm").value;
         var fy = document.getElementById("fy").value;
 
-        var td = document.getElementById("td").value;
+        var td = Number(document.getElementById("td").value);
         var tm = document.getElementById("tm").value;
         var ty = document.getElementById("ty").value;
 
-        
-        
-        var dd = td - fd;
-        var mm = tm - fm;
-        var yy = ty - fy;
-        
-        document.getElementById("dd").innerHTML = dd;
-        document.getElementById("mm").innerHTML = mm;
-        document.getElementById("yy").innerHTML = yy;      }
+        if (td < fd) {
+          td += 30;
+          tm -= 1;
+        }
+
+        if (tm < fm) {
+          tm += 12;
+          ty -= 1;
+        }
+
+        if (ty >= fy) {
+          document.getElementById("dd").innerHTML = td - fd;
+          document.getElementById("mm").innerHTML = tm - fm;
+          document.getElementById("yy").innerHTML = ty - fy;
+        } else {
+          document.getElementById("dd").innerHTML = "fuck off";
+        }
+      }
     </script>
   </body>
 </html>
