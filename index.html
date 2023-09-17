@@ -4,71 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Day Count Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   </head>
   <body>
     <div class="calculator">
-      <!-- To -->
-      <label>End Date:</label>
-      <input id="td" type="number" placeholder="DD" />
-      <input id="tm" type="number" placeholder="MM" />
-      <input id="ty" type="number" placeholder="YYYY" /><br />
 
+      <h1>Day Count Calculator</h1>
       <!-- From -->
-      <label>Start Date:</label>
-      <input id="fd" type="number" placeholder="DD" />
-      <input id="fm" type="number" placeholder="MM" />
-      <input id="fy" type="number" placeholder="YYYY" /><br />
+      <div class="start">
+        <label>Start Date:</label>
+        <input id="fd" type="number" placeholder="DD" />
+        <input id="fm" type="number" placeholder="MM" />
+        <input id="fy" type="number" placeholder="YYYY" />
+      </div>
 
-      <h2 id="result"></h2>
+      <!-- To -->
+      <div class="end">
+        <label>End Date:</label>
+        <input id="td" type="number" placeholder="DD" />
+        <input id="tm" type="number" placeholder="MM" />
+        <input id="ty" type="number" placeholder="YYYY" />
+      </div>
 
-      <button onclick="calculate()">Calculate</button>
+      <!-- result -->
+      <div class="result">
+        <h2 id="result">Enter your dates</h2>
+      </div>
+
+      <!-- button -->
+      <div class="button">
+        <button onclick="calculate()">Calculate</button>
+      </div>
     </div>
 
-    <script>
-      function calculate() {
-        var fd = Number(document.getElementById("fd").value);
-        var fm = Number(document.getElementById("fm").value);
-        var fy = Number(document.getElementById("fy").value);
-
-        var td = Number(document.getElementById("td").value);
-        var tm = Number(document.getElementById("tm").value);
-        var ty = Number(document.getElementById("ty").value);
-
-        if (
-          isNaN(fd) ||
-          isNaN(fm) ||
-          isNaN(fy) ||
-          isNaN(td) ||
-          isNaN(tm) ||
-          isNaN(ty)
-        ) {
-          document.getElementById("result").innerHTML =
-            "Invalid input. Please enter valid numbers.";
-          return;
-        }
-
-        if (ty >= fy) {
-          var dd = td - fd;
-          var mm = tm - fm;
-          var yy = ty - fy;
-
-          if (dd < 0) {
-            mm -= 1;
-            dd += 30;
-          }
-
-          if (mm < 0) {
-            yy -= 1;
-            mm += 12;
-          }
-
-          document.getElementById("result").innerHTML =
-            yy + " years, " + mm + " months, " + dd + " days";
-        } else {
-          document.getElementById("result").innerHTML =
-            "Invalid input. 'To' date must be later than 'From' date.";
-        }
-      }
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
